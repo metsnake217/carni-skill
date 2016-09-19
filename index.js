@@ -6,7 +6,7 @@ var app = new alexa.app( 'carni-skill' );
 
 
 app.launch( function( request, response ) {
-	response.say( 'Welcome to your test skill' ).reprompt( 'Way to go. You got it to run. Bad ass.' ).shouldEndSession( false );
+	response.say( 'Welcome to Carnival Eran! I am waiting for your instructions.' ).reprompt( 'By the way: Astounding job! You got it to run. Bad ass!' ).shouldEndSession( false );
     } );
 
 
@@ -28,7 +28,7 @@ app.intent('sayNumber',
 		    },
 	   function(request,response) {
 	       var number = request.slot('number');
-	       response.say("You asked for the number "+number);
+	       response.say("Oh dear! You asked for the number "+number + ". Anything else I can help you with?");
 	   }
 	   );
 
