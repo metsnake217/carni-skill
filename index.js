@@ -6,7 +6,7 @@ var app = new alexa.app( 'carni-skill' );
 
 
 app.launch( function( request, response ) {
-	response.say( 'Welcome to Carnival Eran! I am waiting for your instructions.' ).reprompt( 'By the way: Astounding job! You got it to run. Bad ass!' ).shouldEndSession( false );
+	response.say( 'Welcome to Carnival Mister Konate-Shaysh! I am waiting for your instructions.' ).reprompt( 'By the way: Astounding job! You got it to run. Bad ass!' ).shouldEndSession( false );
     } );
 
 
