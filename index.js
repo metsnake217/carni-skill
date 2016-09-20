@@ -6,7 +6,7 @@ var app = new alexa.app( 'carni-skill' );
 
 
 app.launch( function( request, response ) {
-	response.say( 'Welcome to Carnival My friend! Guess what? I can repeat back numbers up to 100. I am waiting for your instructions.' ).reprompt( 'By the way: Astounding job! You got your first Alexa to run. Bad ass!' ).shouldEndSession( false );
+	response.say( 'Welcome to Carnival! Now that we are friends, let me tell you a secret... Guess what? I can repeat back numbers up to 100. I am waiting for your instructions.' ).reprompt( 'By the way: Astounding job! You got your first Alexa to run. Bad ass!' ).shouldEndSession( false );
     } );
 
 
