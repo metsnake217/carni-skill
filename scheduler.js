@@ -1,5 +1,5 @@
 var pg = require("pg");
-var moment = require('moment-timezone');
+//var moment = require("moment-timezone");
 //var MailOptions = require('../config/emailClient').MailOptions;
 var config = require("config/database");
 var conString = process.env.DATABASE_URL || "pg://" + config.username + ":"
@@ -20,7 +20,7 @@ Scheduler.prototype.getMatchOfTheDay = function(callback) {
 	var time = this.time;
 
 	var query = client
-			.query("SELECT * FROM findAlexaSchedule where location=" + location + " date_trunc('day',time)='"
+			.query("SELECT * FROM findAlexaSchedule where location='" + location + "' date_trunc('day',time)='"
 					+ time + "' order by date");
 	query.on("row", function(row, result) {
 		result.addRow(row);
