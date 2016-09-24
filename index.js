@@ -44,6 +44,7 @@ app.intent('findSchedule',
 	   function(request,response) {
 	       var location = request.slot('location');
 	       var time = request.slot('time');
+	       console.log("location is " + location + " - time is " + time);
 	       var scheduler = new Scheduler(location,time);
 					scheduler.getMatchOfTheDay(function(error, match) {
 						console.log("match is " + match);
