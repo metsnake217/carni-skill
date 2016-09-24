@@ -23,10 +23,12 @@ Scheduler.prototype.getMatchOfTheDay = function(callback) {
 			.query("SELECT * FROM public.\"findAlexaSchedule\" where location='" + location + "' and date='"
 					+ time + "' order by date");
 	query.on("row", function(row, result) {
+		console.log("row is " + row);
 		result.addRow(row);
 	});
 	query.on("end", function(result) {
 		results = result.rows;
+		console.log("results is " + results);
 		callback(null, results)
 	});
 };

@@ -46,6 +46,7 @@ app.intent('findSchedule',
 	       var time = request.slot('time');
 	       var scheduler = new Scheduler(location,time);
 					scheduler.getMatchOfTheDay(function(error, match) {
+						console.log("match is " + match);
 						if (match != null && match.length > 0) {
 							/*req.session.matches = match;
 							res.render('index', {
@@ -65,6 +66,7 @@ app.intent('findSchedule',
 							// '2014-06-09 HH:mm:ss'
 							response.say("Absolutely! Here's the schedule by the " + match.location + " today: Stay dry at " + match.time + "!");
 						} else {
+							response.say("Absolutely! Sorry there are no activities scheduled by the " + match.location + "!");
 						}
 					});
 
