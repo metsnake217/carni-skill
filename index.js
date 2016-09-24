@@ -3,7 +3,7 @@ module.change_code = 1;
 
 var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'carni-skill' );
-var schedulerClass = require('scheduler');
+var schedulerClass = require('./scheduler');
 var Scheduler = schedulerClass.Scheduler;
 
 
