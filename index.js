@@ -50,6 +50,9 @@ app.intent('findSchedule',
 						if (match != null && match.length > 0) {
 							var resultats = "";
 							for (var prop in match) {
+								if(resultats != "") {
+									resultats = resultats + " then. ";
+								}
 								resultats = resultats + match[prop].activity + ". Starts at " + match[prop].time + " for " + match[prop].duration + ". ";
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
@@ -69,7 +72,7 @@ app.intent('findSchedule',
 										.format('YYYY-MM-DD HH:mm:ss')
 										*/
 							// '2014-06-09 HH:mm:ss'
-							response.say("Absolutely! Here's the schedule by the " +location + ":" + resultats + ". Come join Us!");
+							response.say("Absolutely! Here's the schedule by the " +location + " ... " + resultats + ". Come join Us!");
 						} else {
 							response.say("Absolutely! Sorry there are no activities scheduled by the " + location + "!");
 						}
