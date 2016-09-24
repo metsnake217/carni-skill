@@ -17,7 +17,6 @@ app.error = function( exception, request, response ) {
     console.log(request);
     console.log(response);
     response.say( 'Sorry an error occured ' + error.message);
-    response.shouldEndSession(false);
 };
 
 app.intent('sayNumber',
@@ -75,10 +74,10 @@ app.intent('findSchedule',
 										.format('YYYY-MM-DD HH:mm:ss')
 										*/
 							// '2014-06-09 HH:mm:ss'
-							response.say("Absolutely! Here's the schedule by the " +location + " ... " + resultats + ". Come join Us!");
+							response.say("Absolutely! Here's the schedule by the " +location + " ... " + resultats + ". Come join Us!").shouldEndSession( false );;
 							response.send();
 						} else {
-							response.say("Absolutely! Sorry there are no activities scheduled by the " + location + "!");
+							response.say("Absolutely! Sorry there are no activities scheduled by the " + location + "!").shouldEndSession( false );;
 							response.send();
 						}
 					});
