@@ -64,7 +64,7 @@ app.intent('findSchedule',
 										.format('YYYY-MM-DD HH:mm:ss')
 										*/
 							// '2014-06-09 HH:mm:ss'
-							response.say("Absolutely! Here's the schedule by the " + match.location + " today: Stay dry at " + match.time + "!");
+							response.say("Absolutely! Here's the schedule by the " + match.location + " : " + match.activity + ". Starts at " + match.time + " for " + match.duration + ". Come join Us!");
 						} else {
 							response.say("Absolutely! Sorry there are no activities scheduled by the " + match.location + "!");
 						}
