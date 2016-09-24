@@ -46,11 +46,11 @@ app.intent('findSchedule',
 	       var location = request.slot('location');
 	       var time = request.slot('time');
 	       console.log("location is " + location + " - time is " + time);
+	       	var resultats = "";
 	       var scheduler = new Scheduler(location,time);
 					scheduler.getMatchOfTheDay(function(error, match) {
 						console.log("match is " + match);
 						if (match != null && match.length > 0) {
-							var resultats = "";
 							for (var prop in match) {
 								//if(resultats != "") {
 								//	resultats = resultats + " then. ";
@@ -58,31 +58,13 @@ app.intent('findSchedule',
 								resultats = resultats + match[prop].activity + ". Starts at " + match[prop].time + " for " + match[prop].duration + ". ";
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
-							/*req.session.matches = match;
-							res.render('index', {
-								title : 'Today\'s Match',
-								matches : match,
-								scripts : [ '/javascripts/utils.js',
-										'/javascripts/image_preload.js' ],
-								loggedIn : true,
-								betsMade : singleBetsMade,
-								netlighter : req.session.user,
-								user : req.session.userid,
-								menu : 'today',
-								moment : moment,
-								now : moment(new Date).tz("Europe/Berlin")
-										.format('YYYY-MM-DD HH:mm:ss')
-										*/
-							// '2014-06-09 HH:mm:ss'
-							response.say("Absolutely! Here's the schedule by the " +location + " ... " + resultats + ". Come join Us!").shouldEndSession( false );;
-							response.send();
+							resultats = "Absolutely! Here's the schedule by the " +location + " ... " + resultats + ". Come join Us!");
 						} else {
-							response.say("Absolutely! Sorry there are no activities scheduled by the " + location + "!").shouldEndSession( false );;
-							response.send();
+							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + "!");
 						}
-					});
-
-	       
+					});	  
+			console.log("resultats end is: " + resultats);
+			response.say(resultats).shouldEndSession( false );     
 	   }
 );
 module.exports = app;
