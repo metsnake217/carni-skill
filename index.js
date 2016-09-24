@@ -59,12 +59,18 @@ app.intent('findSchedule',
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
 							resultats = "Absolutely! Here's the schedule by the " +location + " ... " + resultats + ". Come join Us!";
+			console.log("resultats end is: " + resultats);
+			response.say(resultats).shouldEndSession( false ); 
+			response.send();
 						} else {
 							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + "!";
-						}
-					});	  
 			console.log("resultats end is: " + resultats);
-			response.say(resultats).shouldEndSession( false );     
+			response.say(resultats).shouldEndSession( false ); 
+			response.send();
+						}
+					});	
+			return false;
+    
 	   }
 );
 module.exports = app;
