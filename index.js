@@ -3,6 +3,8 @@ module.change_code = 1;
 
 var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'carni-skill' );
+var schedulerClass = require('scheduler');
+var Scheduler = schedulerClass.Scheduler;
 
 
 app.launch( function( request, response ) {
@@ -42,7 +44,32 @@ app.intent('findSchedule',
 	   function(request,response) {
 	       var location = request.slot('location');
 	       var time = request.slot('time');
-	       response.say("Absolutely! Here's the schedule by the " + location + " today: Stay dry at " + time + "!");
+	       var scheduler = new Scheduler(location,time);
+					scheduler.getMatchOfTheDay(function(error, match) {
+						if (match != null && match.length > 0) {
+							/*req.session.matches = match;
+							res.render('index', {
+								title : 'Today\'s Match',
+								matches : match,
+								scripts : [ '/javascripts/utils.js',
+										'/javascripts/image_preload.js' ],
+								loggedIn : true,
+								betsMade : singleBetsMade,
+								netlighter : req.session.user,
+								user : req.session.userid,
+								menu : 'today',
+								moment : moment,
+								now : moment(new Date).tz("Europe/Berlin")
+										.format('YYYY-MM-DD HH:mm:ss')
+										*/
+							// '2014-06-09 HH:mm:ss'
+							response.say("Absolutely! Here's the schedule by the " + match.location + " today: Stay dry at " + match.time + "!");
+							});
+						} else {
+						}
+					});
+
+	       
 	   }
 );
 module.exports = app;
