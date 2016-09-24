@@ -51,9 +51,9 @@ app.intent('findSchedule',
 						if (match != null && match.length > 0) {
 							var resultats = "";
 							for (var prop in match) {
-								if(resultats != "") {
-									resultats = resultats + " then. ";
-								}
+								//if(resultats != "") {
+								//	resultats = resultats + " then. ";
+								//}
 								resultats = resultats + match[prop].activity + ". Starts at " + match[prop].time + " for " + match[prop].duration + ". ";
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
