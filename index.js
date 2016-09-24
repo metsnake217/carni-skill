@@ -30,7 +30,20 @@ app.intent('sayNumber',
 	       var number = request.slot('number');
 	       response.say("Oh dear! You asked for the number "+number + ". Anything else I can help you with?");
 	   }
-	   );
+);
 
+app.intent('findSchedule',
+	   {
+	       "slots":{"location":"LIST_OF_LOCATIONS", "time":"AMAZON.DATE"}
+	       ,"utterances":[ 
+			      "what is the schedule by the {location} {time}",
+			      "find the schedule of the {location} {time}"]
+		    },
+	   function(request,response) {
+	       var location = request.slot('location');
+	       var time = request.slot('time');
+	       response.say("Absolutely! Here's the schedule by the " + location + " today: Stay dry at " + time + "!");
+	   }
+);
 module.exports = app;
 
