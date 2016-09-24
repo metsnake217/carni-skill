@@ -58,9 +58,9 @@ app.intent('findSchedule',
 								resultats = resultats + match[prop].activity + ". Starts at " + match[prop].time + " for " + match[prop].duration + ". ";
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
-							resultats = "Absolutely! Here's the schedule by the " +location + " ... " + resultats + ". Come join Us!");
+							resultats = "Absolutely! Here's the schedule by the " +location + " ... " + resultats + ". Come join Us!";
 						} else {
-							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + "!");
+							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + "!";
 						}
 					});	  
 			console.log("resultats end is: " + resultats);
