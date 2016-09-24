@@ -64,7 +64,6 @@ app.intent('findSchedule',
 										*/
 							// '2014-06-09 HH:mm:ss'
 							response.say("Absolutely! Here's the schedule by the " + match.location + " today: Stay dry at " + match.time + "!");
-							});
 						} else {
 						}
 					});
