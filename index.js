@@ -48,6 +48,11 @@ app.intent('findSchedule',
 					scheduler.getMatchOfTheDay(function(error, match) {
 						console.log("match is " + match);
 						if (match != null && match.length > 0) {
+							var resultats = "";
+							for (var prop in match) {
+								resultats = resultats + prop.activity + ". Starts at " + prop.time + " for " + prop.duration + ". ";
+								console.log("prop is " + prop.location + " - " + prop.activity);
+							}
 							/*req.session.matches = match;
 							res.render('index', {
 								title : 'Today\'s Match',
@@ -64,7 +69,7 @@ app.intent('findSchedule',
 										.format('YYYY-MM-DD HH:mm:ss')
 										*/
 							// '2014-06-09 HH:mm:ss'
-							response.say("Absolutely! Here's the schedule by the " + match.location + " : " + match.activity + ". Starts at " + match.time + " for " + match.duration + ". Come join Us!");
+							response.say("Absolutely! Here's the schedule by the " + resultats + ". Come join Us!");
 						} else {
 							response.say("Absolutely! Sorry there are no activities scheduled by the " + match.location + "!");
 						}
