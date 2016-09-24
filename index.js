@@ -30,7 +30,7 @@ app.intent('sayNumber',
 		    },
 	   function(request,response) {
 	       var number = request.slot('number');
-	       response.say("Oh dear! You asked for the number "+number + ". Anything else I can help you with?");
+	       response.say("Oh dear! You asked for the number " + number + ". Anything else I can help you with?");
 	       response.shouldEndSession(false);
 	   }
 );
@@ -52,13 +52,13 @@ app.intent('findSchedule',
 						console.log("match is " + match);
 						if (match != null && match.length > 0) {
 							for (var prop in match) {
-								//if(resultats != "") {
-								//	resultats = resultats + " then. ";
-								//}
+								if(resultats != "") {
+									resultats = resultats + " Next. ";
+								}
 								resultats = resultats + match[prop].activity + ". Starts at " + match[prop].time + " for " + match[prop].duration + ". ";
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
-							resultats = "Absolutely! Here's the schedule by the " +location + " ... " + resultats + ". Come join Us!";
+							resultats = "Absolutely! Here's the schedule by the " + location + " ... " + resultats + ". Come join Us!";
 			console.log("resultats end is: " + resultats);
 			response.say(resultats).shouldEndSession( false ); 
 			response.send();
