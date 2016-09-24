@@ -20,8 +20,8 @@ Scheduler.prototype.getMatchOfTheDay = function(callback) {
 	var time = this.time;
 
 	var query = client
-			.query("SELECT * FROM findAlexaSchedule where location='" + location + "' and date_trunc('day',time)='"
-					+ time + "' order by date");
+			.query('SELECT * FROM public."findAlexaSchedule" where location="' + location + '" and date_trunc("day",time)="'
+					+ time + '" order by date');
 	query.on("row", function(row, result) {
 		result.addRow(row);
 	});
