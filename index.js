@@ -30,7 +30,8 @@ app.intent('sayNumber',
 		    },
 	   function(request,response) {
 	       var number = request.slot('number');
-	       response.say("Oh dear! You asked for the number " + number + ". Anything else I can help you with?");
+	       number = number * number;
+	       response.say("Oh dear! You are looking for the number " + number + ". Anything else I can help you with?");
 	       response.shouldEndSession(false);
 	   }
 );
