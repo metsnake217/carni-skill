@@ -1,7 +1,7 @@
 var pg = require("pg");
 //var moment = require("moment-timezone");
 //var MailOptions = require('../config/emailClient').MailOptions;
-var config = require("config/database");
+var config = require("./config/database");
 var conString = process.env.DATABASE_URL || "pg://" + config.username + ":"
 		+ config.password + "@" + config.host + ":" + config.port + "/"
 		+ config.database;
