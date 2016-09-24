@@ -51,7 +51,7 @@ app.intent('findSchedule',
 							var resultats = "";
 							for (var prop in match) {
 								resultats = resultats + prop.activity + ". Starts at " + prop.time + " for " + prop.duration + ". ";
-								console.log("prop is " + prop.location + " - " + prop.activity);
+								console.log("prop is " + prop.location + " - " + prop);
 							}
 							/*req.session.matches = match;
 							res.render('index', {
