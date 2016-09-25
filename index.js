@@ -14,11 +14,10 @@ app.error = function( exception, request, response ) {
     response.say( 'Sorry an error occured ' + error.message);
 };
 
-app.launch( function( request, response, exception ) {
+app.launch( function( request, response ) {
 	//response.say( 'Hello, welcome to Carnival. Now that we are friends, I can tell you a secret. I will be your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: "Alexa turn lights on" or "Alexa turn lights off" or "Alexa What is the schedule by the Pool today". For the full list of commands look at the brochure behind me.' ).reprompt( 'Are you still there?' ).shouldEndSession( false );
-	response.say( 'Hello, welcome to Carnival.').reprompt( 'Are you still there? Would you like to know the schedule by a specific location today? Say Alexa what is the schedule by the location today or tomorrow?' );
+	response.say( 'Hello, welcome to Carnival! You have finally arrived in your cabin. Look at the brochure behind me, it will help us converse better!').reprompt( 'Still checking? Would you like to know the schedule by a specific location today? Say Alexa what is the schedule by the location today or tomorrow?' );
 	response.shouldEndSession( false );
-	console.log("exception  is " + exception);
     } );
 /*console.log("requesting alexa now");
 app.request({
@@ -178,6 +177,14 @@ app.intent('closeSessionQuestion',
 		return false;
 
 });
+
+app.intent('carniHelp',
+	   {},
+	   function(request,response) {
+	       		response.say("Hello there! I am your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: 'Alexa turn lights on' or 'Alexa turn lights off' or 'Alexa What is the schedule by the Pool today'. For the full list of commands look at the brochure behind me.'");
+	       		response.shouldEndSession(false);
+	   }
+);
 
 app.intent('AMAZON.StopIntent',
 	   function(request,response) {
