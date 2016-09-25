@@ -35,7 +35,7 @@ app.request({
       }
     }
   }
-		    });
+		    }).response.send();
 
     } );
 
