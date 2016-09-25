@@ -1,7 +1,8 @@
 module.change_code = 1;
 'use strict';
 
-var alexa = require( 'alexa-app' );
+var alexa = require( 'alexa-response' );
+//var alexares = require( 'alexa-response' );
 var app = new alexa.app( 'carni-skill' );
 var schedulerClass = require('./scheduler');
 var Scheduler = schedulerClass.Scheduler;
@@ -33,6 +34,23 @@ app.intent('sayNumber',
 	       number = number * number;
 	       response.say("Oh dear! You are looking for the number " + number + ". Anything else I can help you with?");
 	       response.shouldEndSession(false);
+	   }
+);
+
+app.intent('closeSessionQuestion',
+	   {
+	       "slots":{"answer":"LIST_OF_ANSWERS"}
+	       ,"utterances":["{answer}"]
+		    },
+	   function(request,response) {
+	       var answer = request.slot('answer');
+	       if(answer == 'yes'){
+	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
+	       		response.shouldEndSession(true);
+	       } else {
+	       		response.say("Great! Would you want the schedule on other parts of the pool such as the Bar Lola, the restaurant, or the Pool?");
+	       		response.shouldEndSession(false);
+	   		}
 	   }
 );
 
