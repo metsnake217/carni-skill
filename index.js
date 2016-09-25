@@ -44,8 +44,6 @@ app.request({
   }
 		    });*/
 
-		response.say("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
-
 } );
 
 
