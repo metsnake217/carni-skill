@@ -116,30 +116,30 @@ app.intent('findSchedule',
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
 							if(typeof location != "undefined"){
-							resultats = "Absolutely! Here's the schedule by the " + location + " on " + time + " ... " + resultats + ". Come join Us!";
-						} else {
-							resultats = "Absolutely! Here are all the schedules on " + time + " : ...." +  resultats + ". Come join Us!";
-						}
-			console.log("resultats end is: " + resultats);
-			response.say(resultats).reprompt("There are many other scheduled activities today. Would you like to know about them?"); 
-			response.send();
-			response.shouldEndSession(false);
+								resultats = "Absolutely! Here's the schedule by the " + location + " on " + time + " ... " + resultats + ". Come join Us!";
+							} else {
+								resultats = "Absolutely! Here are all the schedules on " + time + " : ...." +  resultats + ". Come join Us!";
+							}
+							console.log("resultats end is: " + resultats);
+							response.say(resultats).reprompt("There are many other scheduled activities today. Would you like to know about them?"); 
+							response.send();
+							response.shouldEndSession(false);
 						} else {
 							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + " on " + time + "!";
-			console.log("resultats end is: " + resultats);
-			response.say(resultats); 
-			response.send();
-			response.shouldEndSession(false);
-
-
+							console.log("resultats end is: " + resultats);
+							response.say(resultats); 
+							response.send();
+							response.shouldEndSession(false);
 						}
-			response.say("Would you like to know the schedule by a specific location today? Say Alexa what is the schedule by the location today?").shouldEndSession(false);
+						response.say("Would you like to know the schedule by a specific location today? Say Alexa what is the schedule by the location today?").shouldEndSession(false);
 					});	
 			
-			return false;
+			
 		}
-
 		response.say("Anything else i can help you with? otherwise Say 'Alexa Stop' to end our conversation").shouldEndSession(false);
+		
+		return false;
+		
 
 		/*setTimeout(function() {
 			response.say("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
