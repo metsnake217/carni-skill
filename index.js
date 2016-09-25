@@ -44,11 +44,11 @@ app.request({
   }
 		    });*/
 
-    } );
+} );
 
 
 
-app.intent('sayNumber',
+/*app.intent('sayNumber',
 	   {
 	       "slots":{"number":"NUMBER"}
 	       ,"utterances":[ 
@@ -65,7 +65,7 @@ app.intent('sayNumber',
 response.say("Do you still need me?");
 	       response.shouldEndSession(false);
 	   }
-);
+);*/
 
 app.intent('closeSessionQuestion',
 	   {
@@ -78,7 +78,7 @@ app.intent('closeSessionQuestion',
 	       if(answer == 'no'){
 	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
-	       } else {
+	       } else if(answer == 'yes'){
 	       		response.say("Great! Would you want the schedule on other parts of the pool such as the Bar Lola, the restaurant, or the Pool?");
 	       		response.shouldEndSession(false);
 	   		}
@@ -96,7 +96,9 @@ app.intent('findSchedule',
 	       var location = request.slot('location');
 	       var time = request.slot('time');
 	       console.log("location is " + location + " - time is " + time);
+	       if(location != "undefined" && time != "undefined"){
 	       	var resultats = "";
+	       
 	       var scheduler = new Scheduler(location,time);
 					scheduler.getMatchOfTheDay(function(error, match) {
 						console.log("match is " + match);
@@ -125,7 +127,9 @@ app.intent('findSchedule',
 
 						}
 					});	
+			
 			return false;
+		}
     
 	   }
 );
@@ -148,6 +152,12 @@ app.intent('closeSessionQuestion',
 	   }
 );
 
+app.intent('AMAZON.StopIntent',
+	   function(request,response) {
+	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!").shouldEndSession(true);
+	   }
+);
+
 app.intent('AMAZON.CancelIntent',
 	   function(request,response) {
 	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!").shouldEndSession(true);
@@ -156,7 +166,7 @@ app.intent('AMAZON.CancelIntent',
 
 app.intent('AMAZON.PauseIntent',
 	   function(request,response) {
-	       		response.say("Of course! I will give you some time...").shouldEndSession(false);
+	       		response.say("Of course! I will give you some time... I'll wait for your instructions.").shouldEndSession(false);
 	   }
 );
 
@@ -169,12 +179,6 @@ app.intent('AMAZON.ResumeIntent',
 app.intent('AMAZON.StartOverIntent',
 	   function(request,response) {
 	       		response.say("Allright! Let's ask carni again!").shouldEndSession(false);
-	   }
-);
-
-app.intent('AMAZON.StopIntent',
-	   function(request,response) {
-	       		response.say("Allright! I'll wait for your instructions.").shouldEndSession(false);
 	   }
 );
 
