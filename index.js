@@ -2,19 +2,27 @@ module.change_code = 1;
 'use strict';
 
 var alexa = require( 'alexa-app' );
-//var alexaresp = require( 'alexa-response' );
 var app = new alexa.app( 'carni-skill' );
 var schedulerClass = require('./scheduler');
 var Scheduler = schedulerClass.Scheduler;
 
 
 app.launch( function( request, response ) {
-			//alexaresp.ask("ah what is your problem?").build();
 	response.say( 'Hello, welcome to Carnival. Now that we are friends, I can tell you a secret. I will be your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: "Alexa turn lights on" or "Alexa turn lights off" or "Alexa What is the schedule by the Pool today". For the full list of commands look at the brochure behind me.' ).reprompt( 'Are you still there?' ).shouldEndSession( false );
-
-
-		//response.ask("what is your problem?").build();
-
+    
+console.log("requesting alexa now");
+app.request({
+	         "session": {
+    "attributes": {},
+    "new": false
+  },
+  "request": {
+    "type": "IntentRequest",
+    "intent": {
+      "name": "sayNumber"
+    }
+  }
+		    });
 
     } );
 
@@ -50,6 +58,7 @@ app.intent('closeSessionQuestion',
 		    },
 	   function(request,response) {
 	       var answer = request.slot('answer');
+	       console.log("answer is " + answer);
 	       if(answer == 'yes'){
 	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
@@ -94,11 +103,59 @@ app.intent('findSchedule',
 			response.say(resultats); 
 			response.send();
 			response.shouldEndSession(false);
+
+			response.say("Would you like to know the schedule by the bar lola today?").shouldEndSession(false);
+
+
 						}
 					});	
 			return false;
     
 	   }
 );
+
+app.intent('AMAZON.CancelIntent',
+	   function(request,response) {
+	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!").shouldEndSession(false);
+	   }
+);
+
+app.intent('AMAZON.PauseIntent',
+	   function(request,response) {
+	       		response.say("Of course! I will give you some time...").shouldEndSession(false);
+	   }
+);
+
+app.intent('AMAZON.ResumeIntent',
+	   function(request,response) {
+	       		response.say("Ah where were we?").shouldEndSession(false);
+	   }
+);
+
+app.intent('AMAZON.StartOverIntent',
+	   function(request,response) {
+	       		response.say("Allright! Let's ask carni again!").shouldEndSession(false);
+	   }
+);
+
+app.intent('AMAZON.StopIntent',
+	   function(request,response) {
+	       		response.say("Allright! I'll wait for your instructions.").shouldEndSession(false);
+	   }
+);
+
+app.intent('AMAZON.YesIntent',
+	   function(request,response) {
+	       		response.say("Great!").shouldEndSession(false);
+	   }
+);
+
+app.intent('AMAZON.NoIntent',
+	   function(request,response) {
+	       		response.say("Allright! What else can I help you with?").shouldEndSession(false);
+	   }
+);
+
+
 module.exports = app;
 
