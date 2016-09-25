@@ -26,7 +26,13 @@ app.request({
   "request": {
     "type": "IntentRequest",
     "intent": {
-      "name": "sayNumber"
+      "name": "sayNumber",
+      "slots": {
+        "number": {
+          "name": "number",
+          "value": "4"
+        }
+      }
     }
   }
 		    });
