@@ -139,10 +139,11 @@ app.intent('findSchedule',
 			
 			
 		}
-		response.say("Anything else i can help you with? otherwise Say 'Alexa Stop' to end our conversation").shouldEndSession(false);
+		
 		
 		return false;
 		
+		response.say("Anything else i can help you with? otherwise Say 'Alexa Stop' to end our conversation").shouldEndSession(false);
 
 		/*setTimeout(function() {
 			response.say("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
@@ -150,8 +151,7 @@ app.intent('findSchedule',
 		},1000);*/
 
     
-	   }
-);
+	   
 
 app.intent('closeSessionQuestion',
 	   {
@@ -172,6 +172,8 @@ app.intent('closeSessionQuestion',
 	   		}
 	   }
 );
+
+});
 
 app.intent('AMAZON.StopIntent',
 	   function(request,response) {
