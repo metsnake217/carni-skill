@@ -7,11 +7,18 @@ var schedulerClass = require('./scheduler');
 var Scheduler = schedulerClass.Scheduler;
 
 
+app.error = function( exception, request, response ) {
+    console.log(exception)
+    console.log(request);
+    console.log(response);
+    response.say( 'Sorry an error occured ' + error.message);
+};
+
 app.launch( function( request, response ) {
 	//response.say( 'Hello, welcome to Carnival. Now that we are friends, I can tell you a secret. I will be your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: "Alexa turn lights on" or "Alexa turn lights off" or "Alexa What is the schedule by the Pool today". For the full list of commands look at the brochure behind me.' ).reprompt( 'Are you still there?' ).shouldEndSession( false );
 	response.say( 'Hello, welcome to Carnival.').reprompt( 'Are you still there?' ).shouldEndSession( false );
     
-console.log("requesting alexa now");
+/*console.log("requesting alexa now");
 app.request({
 	         "session": {
 	"application": {
@@ -35,17 +42,11 @@ app.request({
       }
     }
   }
-		    }).response.send();
+		    });*/
 
     } );
 
 
-app.error = function( exception, request, response ) {
-    console.log(exception)
-    console.log(request);
-    console.log(response);
-    response.say( 'Sorry an error occured ' + error.message);
-};
 
 app.intent('sayNumber',
 	   {
@@ -61,6 +62,7 @@ app.intent('sayNumber',
 	       number = number * number;
 	       console.log("number is: " + number);
 	       response.say("Oh dear! You are looking for the number " + number + ". Anything else I can help you with?");
+response.say("Do you still need me?");
 	       response.shouldEndSession(false);
 	   }
 );
@@ -73,7 +75,7 @@ app.intent('closeSessionQuestion',
 	   function(request,response) {
 	       var answer = request.slot('answer');
 	       console.log("answer is " + answer);
-	       if(answer == 'yes'){
+	       if(answer == 'no'){
 	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
 	       } else {
@@ -118,13 +120,31 @@ app.intent('findSchedule',
 			response.send();
 			response.shouldEndSession(false);
 
-			response.say("Would you like to know the schedule by the bar lola today?").shouldEndSession(false);
+			response.say("Would you like to know the schedule by the bar lola today? Say Alexa what is the schedule by the bar lola today?").shouldEndSession(false);
 
 
 						}
 					});	
 			return false;
     
+	   }
+);
+
+app.intent('closeSessionQuestion',
+	   {
+	       "slots":{"answer":"LIST_OF_ANSWERS"}
+	       ,"utterances":["{answer}"]
+		    },
+	   function(request,response) {
+	       var answer = request.slot('answer');
+	       console.log("answer is " + answer);
+	       if(answer == 'no'){
+	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
+	       		response.shouldEndSession(true);
+	       } else {
+	       		response.say("Great! Would you want the schedule on other parts of the pool such as the Bar Lola, the restaurant, or the Pool?");
+	       		response.shouldEndSession(false);
+	   		}
 	   }
 );
 
