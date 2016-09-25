@@ -8,12 +8,16 @@ var Scheduler = schedulerClass.Scheduler;
 
 
 app.launch( function( request, response ) {
-	response.say( 'Hello, welcome to Carnival. Now that we are friends, I can tell you a secret. I will be your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: "Alexa turn lights on" or "Alexa turn lights off" or "Alexa What is the schedule by the Pool today". For the full list of commands look at the brochure behind me.' ).reprompt( 'Are you still there?' ).shouldEndSession( false );
+	//response.say( 'Hello, welcome to Carnival. Now that we are friends, I can tell you a secret. I will be your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: "Alexa turn lights on" or "Alexa turn lights off" or "Alexa What is the schedule by the Pool today". For the full list of commands look at the brochure behind me.' ).reprompt( 'Are you still there?' ).shouldEndSession( false );
+	response.say( 'Hello, welcome to Carnival.').reprompt( 'Are you still there?' ).shouldEndSession( false );
     
 console.log("requesting alexa now");
 app.request({
 	         "session": {
     "attributes": {},
+    "user": {
+      	"userId": "amzn1.ask.account.AFHTTTJIGB73JYDW2LKXWVZVHR75Y3MCOXYLOMWJHWYDMVPMOWDPNDWQKEAN5COL27O7M6WEUITBWXCEHIRHMCWMENAOPPKYSFMBUTZ3ZGKEJ2JRKBSIQHAZXYQJNVSLTP2RE4YXSAWDFPPHVN2I4OTUYZGT3FU5JQONIM3J25RH7AVQA3J2YASCTKI7WHBS7AHIKZKLDI5UJTA"
+	},
     "new": false
   },
   "request": {
@@ -116,7 +120,7 @@ app.intent('findSchedule',
 
 app.intent('AMAZON.CancelIntent',
 	   function(request,response) {
-	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!").shouldEndSession(false);
+	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!").shouldEndSession(true);
 	   }
 );
 
