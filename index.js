@@ -17,7 +17,7 @@ app.error = function( exception, request, response ) {
 app.launch( function( request, response ) {
 	//response.say( 'Hello, welcome to Carnival. Now that we are friends, I can tell you a secret. I will be your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: "Alexa turn lights on" or "Alexa turn lights off" or "Alexa What is the schedule by the Pool today". For the full list of commands look at the brochure behind me.' ).reprompt( 'Are you still there?' ).shouldEndSession( false );
 	response.say( 'Hello, welcome to Carnival.').reprompt( 'Are you still there? Would you like to know the schedule by a specific location today? Say Alexa what is the schedule by the location today?' ).shouldEndSession( false );
-    
+    } );
 /*console.log("requesting alexa now");
 app.request({
 	         "session": {
@@ -79,7 +79,7 @@ app.intent('closeSessionQuestion',
 	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
 	       } else if(answer == 'yes'){
-	       		response.say("Great! Would you want the schedule on other parts of the pool such as the Bar Lola, the restaurant, or the Pool?");
+	       		response.say("Great! Would you want the schedule on other parts of the ship such as the Bar Lola, the restaurant, or the Pool?");
 	       		response.shouldEndSession(false);
 	       	} else {
 				response.say("Hopefully i will be helpful to you soon! our conversation is about to end...").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
@@ -87,7 +87,7 @@ app.intent('closeSessionQuestion',
 	   }
 );
 
-} );
+
 
 
 app.intent('findSchedule',
