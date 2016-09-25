@@ -59,6 +59,7 @@ app.intent('sayNumber',
 	   function(request,response) {
 	       var number = request.slot('number');
 	       number = number * number;
+	       console.log("number is: " + number);
 	       response.say("Oh dear! You are looking for the number " + number + ". Anything else I can help you with?");
 	       response.shouldEndSession(false);
 	   }
