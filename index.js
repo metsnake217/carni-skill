@@ -95,8 +95,11 @@ app.intent('findSchedule',
 	   function(request,response) {
 	       var location = request.slot('location');
 	       var time = request.slot('time');
+	       if(time == "undefined"){
+	       	time = new Date().toISOString();
+	       }
 	       console.log("location is " + location + " - time is " + time);
-	       if(location != "undefined" && time != "undefined"){
+	       if(time != "undefined"){
 	       	var resultats = "";
 	       
 	       var scheduler = new Scheduler(location,time);
@@ -112,7 +115,7 @@ app.intent('findSchedule',
 							}
 							resultats = "Absolutely! Here's the schedule by the " + location + " ... " + resultats + ". Come join Us!";
 			console.log("resultats end is: " + resultats);
-			response.say(resultats); 
+			response.say(resultats).reprompt("There are many other scheduled activities today. Would you like to know about them?"); 
 			response.send();
 			response.shouldEndSession(false);
 						} else {
@@ -146,7 +149,7 @@ app.intent('closeSessionQuestion',
 	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
 	       } else {
-	       		response.say("Great! Would you want the schedule on other parts of the pool such as the Bar Lola, the restaurant, or the Pool?");
+	       		response.say("Great! Say 'Bar Lola' or 'Bar lola today' or 'All schedules'?");
 	       		response.shouldEndSession(false);
 	   		}
 	   }

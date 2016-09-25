@@ -18,10 +18,15 @@ Scheduler.prototype.getMatchOfTheDay = function(callback) {
 	var results;
 	var location = this.location;
 	var time = this.time;
+	var query;
 
-	var query = client
-			.query("SELECT * FROM public.\"findAlexaSchedule\" where location='" + location + "' and date='"
-					+ time + "' order by date");
+	if(location != "undefined"){
+	query = client
+			.query("SELECT * FROM public.\"findAlexaSchedule\" where location='" + location + "' and date='" + time + "' order by date");
+	} else {
+	query = client
+			.query("SELECT * FROM public.\"findAlexaSchedule\" where date='" + time + "' order by date");		
+	}
 	query.on("row", function(row, result) {
 		console.log("row is " + row);
 		result.addRow(row);
