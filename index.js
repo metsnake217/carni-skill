@@ -14,6 +14,9 @@ app.launch( function( request, response ) {
 console.log("requesting alexa now");
 app.request({
 	         "session": {
+	"application": {
+      "applicationId": "amzn1.ask.skill.b5aae3fe-64e0-47d7-9297-d6df8d487195"
+    },
     "attributes": {},
     "user": {
       	"userId": "amzn1.ask.account.AFHTTTJIGB73JYDW2LKXWVZVHR75Y3MCOXYLOMWJHWYDMVPMOWDPNDWQKEAN5COL27O7M6WEUITBWXCEHIRHMCWMENAOPPKYSFMBUTZ3ZGKEJ2JRKBSIQHAZXYQJNVSLTP2RE4YXSAWDFPPHVN2I4OTUYZGT3FU5JQONIM3J25RH7AVQA3J2YASCTKI7WHBS7AHIKZKLDI5UJTA"
