@@ -16,7 +16,7 @@ app.error = function( exception, request, response ) {
 
 app.launch( function( request, response ) {
 	//response.say( 'Hello, welcome to Carnival. Now that we are friends, I can tell you a secret. I will be your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: "Alexa turn lights on" or "Alexa turn lights off" or "Alexa What is the schedule by the Pool today". For the full list of commands look at the brochure behind me.' ).reprompt( 'Are you still there?' ).shouldEndSession( false );
-	response.say( 'Hello, welcome to Carnival.').reprompt( 'Are you still there?' ).shouldEndSession( false );
+	response.say( 'Hello, welcome to Carnival.').reprompt( 'Are you still there?' ).reprompt("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);;
     
 /*console.log("requesting alexa now");
 app.request({
@@ -43,11 +43,6 @@ app.request({
     }
   }
 		    });*/
-
-		setTimeout(function() {
-			response.say("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
-			response.send();
-		},2000);
 
 } );
 
@@ -84,15 +79,7 @@ app.intent('closeSessionQuestion',
 	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
 	       } else if(answer == 'yes'){
-	       		response.say("Great! Would you want the schedule on other parts of the pool such as the Bar Lola, the restaurant, or the Pool?");
-	       		response.shouldEndSession(false);
-
-		setTimeout(function() {
-			response.say("Hopefully i will be helpful to you soon! our conversation is about to end...").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
-			response.send();
-		},2000);
-
-
+	       		response.say("Great! Would you want the schedule on other parts of the pool such as the Bar Lola, the restaurant, or the Pool?").reprompt("Hopefully i will be helpful to you soon! our conversation is about to end...").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
 	   		}
 	   }
 );
@@ -149,12 +136,7 @@ app.intent('findSchedule',
 			return false;
 		}
 
-		response.say("Anything else i can help you with? otherwise Say 'Alexa Stop' to end our conversation").shouldEndSession(false);
-
-		setTimeout(function() {
-			response.say("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
-			response.send();
-		},2000);
+		response.say("Anything else i can help you with? otherwise Say 'Alexa Stop' to end our conversation").reprompt("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);;
 
     
 	   }
@@ -172,14 +154,7 @@ app.intent('closeSessionQuestion',
 	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
 	       } else {
-	       		response.say("Great! Say 'location' or 'Location today' or 'All schedules today'?");
-	       		response.shouldEndSession(false);
-
-		setTimeout(function() {
-			response.say("Anything i can help you with before we end our conversation?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
-			response.send();
-		},2000);
-
+	       		response.say("Great! Say 'location' or 'Location today' or 'All schedules today'?").reprompt("Anything i can help you with before we end our conversation?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
 	   		}
 	   }
 );
