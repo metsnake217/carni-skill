@@ -44,6 +44,11 @@ app.request({
   }
 		    });*/
 
+		setTimeout(function() {
+			response.say("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
+			response.send();
+		},5000);
+
 } );
 
 
@@ -82,10 +87,10 @@ app.intent('closeSessionQuestion',
 	       		response.say("Great! Would you want the schedule on other parts of the pool such as the Bar Lola, the restaurant, or the Pool?");
 	       		response.shouldEndSession(false);
 
-	     setTimeout(function() {
-			response.say("After timeout!").say(" test ").reprompt("Reprompt");
+		setTimeout(function() {
+			response.say("Hopefully i will be helpful to you soon! our conversation is about to end...").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
 			response.send();
-		},1000);
+		},5000);
 
 
 	   		}
@@ -147,7 +152,7 @@ app.intent('findSchedule',
 		response.say("Anything else i can help you with? otherwise Say 'Alexa Stop' to end our conversation").shouldEndSession(false);
 
 		setTimeout(function() {
-			response.say("After timeout!").say(" test ").reprompt("Reprompt").shouldEndSession(true);
+			response.say("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
 			response.send();
 		},5000);
 
@@ -171,7 +176,7 @@ app.intent('closeSessionQuestion',
 	       		response.shouldEndSession(false);
 
 		setTimeout(function() {
-			response.say("After timeout!").say(" test ").reprompt("Reprompt").shouldEndSession(true);
+			response.say("Anything i can help you with before we end our conversation?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
 			response.send();
 		},5000);
 
@@ -220,11 +225,6 @@ app.intent('AMAZON.NoIntent',
 	       		response.say("Allright! What else can I help you with?").shouldEndSession(false);
 	   }
 );
-
-		setTimeout(function() {
-			response.say("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
-			response.send();
-		},5000);
 
 module.exports = app;
 
