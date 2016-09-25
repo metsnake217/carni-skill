@@ -113,7 +113,11 @@ app.intent('findSchedule',
 								resultats = resultats + match[prop].activity + ". Starts at " + match[prop].time + " for " + match[prop].duration + ". ";
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
+							if(typeof location != "undefined"){
 							resultats = "Absolutely! Here's the schedule by the " + location + " ... " + resultats + ". Come join Us!";
+						} else {
+							resultats = "Absolutely! Here are all the schedules on " + time + " : ...." +  resultats + ". Come join Us!";
+						}
 			console.log("resultats end is: " + resultats);
 			response.say(resultats).reprompt("There are many other scheduled activities today. Would you like to know about them?"); 
 			response.send();
