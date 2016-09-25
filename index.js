@@ -114,7 +114,7 @@ app.intent('findSchedule',
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
 							if(typeof location != "undefined"){
-							resultats = "Absolutely! Here's the schedule by the " + location + " ... " + resultats + ". Come join Us!";
+							resultats = "Absolutely! Here's the schedule by the " + location + " on " + time + " ... " + resultats + ". Come join Us!";
 						} else {
 							resultats = "Absolutely! Here are all the schedules on " + time + " : ...." +  resultats + ". Come join Us!";
 						}
@@ -123,22 +123,21 @@ app.intent('findSchedule',
 			response.send();
 			response.shouldEndSession(false);
 						} else {
-							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + "!";
+							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + " on " + time + "!";
 			console.log("resultats end is: " + resultats);
 			response.say(resultats); 
 			response.send();
 			response.shouldEndSession(false);
 
-			response.say("Would you like to know the schedule by the bar lola today? Say Alexa what is the schedule by the bar lola today?").shouldEndSession(false);
-
 
 						}
+			response.say("Would you like to know the schedule by a specific location today? Say Alexa what is the schedule by the location today?").shouldEndSession(false);
 					});	
 			
 			return false;
 		}
 
-		response.say("Would you like to know the schedule by the bar lola today? For example: Say Alexa what is the schedule by the bar lola today? or Say Alexa Stop to end our conversation").shouldEndSession(false);
+		response.say("Anything else i can help you with? otherwise Say 'Alexa Stop' to end our conversation").shouldEndSession(false);
     
 	   }
 );
@@ -155,7 +154,7 @@ app.intent('closeSessionQuestion',
 	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
 	       } else {
-	       		response.say("Great! Say 'Bar Lola' or 'Bar lola today' or 'All schedules'?");
+	       		response.say("Great! Say 'location' or 'Location today' or 'All schedules today'?");
 	       		response.shouldEndSession(false);
 	   		}
 	   }
