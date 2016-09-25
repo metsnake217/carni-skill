@@ -22,7 +22,7 @@ Scheduler.prototype.getMatchOfTheDay = function(callback) {
 
 	if(typeof location != "undefined"){
 	query = client
-			.query("SELECT * FROM public.\"findAlexaSchedule\" where location='" + location + "' and date='" + time + "' order by date");
+			.query("SELECT * FROM public.\"findAlexaSchedule\" where location='" + location.toLowerCase() + "' and date='" + time + "' order by date");
 	} else {
 	query = client
 			.query("SELECT * FROM public.\"findAlexaSchedule\" where date='" + time + "' order by date");		
