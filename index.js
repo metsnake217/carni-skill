@@ -81,14 +81,9 @@ app.intent('closeSessionQuestion',
 	       } else if(answer == 'yes'){
 	       		response.say("Great! Would you want the schedule on other parts of the pool such as the Bar Lola, the restaurant, or the Pool?");
 	       		response.shouldEndSession(false);
-
-		/*setTimeout(function() {
-			response.say("Hopefully i will be helpful to you soon! our conversation is about to end...").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
-			response.send();
-		},1000);*/
-
-
-	   		}
+	       	} else {
+				response.say("Hopefully i will be helpful to you soon! our conversation is about to end...").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
+			}
 	   }
 );
 
@@ -166,15 +161,11 @@ app.intent('closeSessionQuestion',
 	       if(answer == 'no'){
 	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
-	       } else {
+	       } else if(answer == 'yes'){
 	       		response.say("Great! Say 'location' or 'Location today' or 'All schedules today'?");
 	       		response.shouldEndSession(false);
-
-		/*setTimeout(function() {
-			response.say("Anything i can help you with before we end our conversation?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
-			response.send();
-		},5000);*/
-
+	       	} else {
+			response.say("Our conversation is coming to an end. Anything i can help you with before we end our conversation?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
 	   		}
 	   }
 );
