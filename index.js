@@ -95,11 +95,11 @@ app.intent('findSchedule',
 	   function(request,response) {
 	       var location = request.slot('location');
 	       var time = request.slot('time');
-	       if(time == "undefined"){
+	       if(typeof time == "undefined"){
 	       	time = new Date().toISOString();
 	       }
 	       console.log("location is " + location + " - time is " + time);
-	       if(time != "undefined"){
+	       if(typeof time != "undefined"){
 	       	var resultats = "";
 	       
 	       var scheduler = new Scheduler(location,time);
@@ -133,6 +133,8 @@ app.intent('findSchedule',
 			
 			return false;
 		}
+
+		response.say("Would you like to know the schedule by the bar lola today? For example: Say Alexa what is the schedule by the bar lola today? or Say Alexa Stop to end our conversation").shouldEndSession(false);
     
 	   }
 );
