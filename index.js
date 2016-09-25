@@ -44,7 +44,7 @@ app.request({
   }
 		    });*/
 
-} );
+
 
 
 
@@ -86,6 +86,9 @@ app.intent('closeSessionQuestion',
 			}
 	   }
 );
+
+} );
+
 
 app.intent('findSchedule',
 	   {
