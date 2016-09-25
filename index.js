@@ -123,7 +123,7 @@ app.intent('findSchedule',
 							if(typeof location != "undefined"){
 								resultats = "Absolutely! Here's the schedule by the " + location + " on " + time + " ... " + resultats + ". Come join Us!";
 							} else {
-								resultats = "Absolutely! Here are all the schedules on " + time + " : ...." +  resultats + ". Come join Us!";
+								resultats = "Absolutely! Here are all the schedules on " + time + " : ...." +  resultats + ". Join the fun!";
 							}
 							console.log("resultats end is: " + resultats);
 							response.say(resultats).reprompt("There are many other scheduled activities today. Would you like to know about them?"); 
