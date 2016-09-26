@@ -15,7 +15,7 @@ app.error = function( exception, request, response ) {
 };
 
 app.launch( function( request, response ) {
-	response.say( 'Hello, welcome to Carnival! You have finally arrived in your cabin. Look at the brochure behind me, it will help us converse better!').reprompt( 'Still checking?' );
+	response.say( 'Hello, welcome to Carnival! You have finally arrived in your cabin. Look at the brochure behind me, it will help us commmunicate better!').reprompt( 'Still checking?' );
 	response.shouldEndSession( false );
 
 
