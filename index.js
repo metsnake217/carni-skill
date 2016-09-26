@@ -61,7 +61,7 @@ app.intent('findSchedule',
 	       var location = request.slot('location');
 	       var time = request.slot('time');
 	       if(typeof time == "undefined"){
-	       	time = moment().tx("America/New_York").format("YYYY-MM-DD");
+	       	time = moment().tz("America/New_York").format("YYYY-MM-DD");
 	       }
 	       console.log("location is " + location + " - time is " + time + " moment: " + moment());
 	       if(typeof time != "undefined"){
