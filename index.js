@@ -28,7 +28,7 @@ app.launch( function( request, response ) {
 	       var answer = request.slot('answer');
 	       console.log("answer is " + answer);
 	       if(answer == 'no'){
-	       		response.say("Hopefully i will be helpful to you soon! our conversation is about to end... Have fun on the ship! Goodbye!");
+	       		response.say("Hopefully i will be helpful to you soon! Call me when you need me... Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
 	       } else if(answer == 'yes'){
 	       		response.say("Great!  Would you like to know the schedule by a specific location today? Bar Lola, Pool, or Restaurant? Say Alexa what is the schedule by the location today or tomorrow?");
@@ -98,7 +98,7 @@ app.intent('closeSessionQuestion',
 	       var answer = request.slot('answer');
 	       console.log("answer is " + answer);
 	       if(answer == 'no'){
-	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!");
+	       		response.say("It was fun talking to you. Call me when you need me. Have fun on the ship! Goodbye!");
 	       		response.shouldEndSession(true);
 	       } else if(answer == 'yes'){
 	       		response.say("Great! Say 'location' or 'Location today' or 'All schedules today'?");
@@ -123,13 +123,13 @@ app.intent('carniHelp',
 
 app.intent('AMAZON.StopIntent',
 	   function(request,response) {
-	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!").shouldEndSession(true);
+	       		response.say("It was fun talking to you. Call me when you need me. Goodbye!").shouldEndSession(true);
 	   }
 );
 
 app.intent('AMAZON.CancelIntent',
 	   function(request,response) {
-	       		response.say("It was lovely conversing with you. Have fun on the ship! Goodbye!").shouldEndSession(true);
+	       		response.say("It was fun talking to you. Call me when you need me. Have fun on the ship! Goodbye!").shouldEndSession(true);
 	   }
 );
 
