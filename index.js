@@ -36,10 +36,10 @@ app.launch( function( request, response ) {
 	       	} else {
 				response.say("Hopefully i will be helpful to you soon! our conversation is about to end...").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
 			}
-	   }
+	   });
 
 	} );
-);
+
 
 app.intent('findSchedule',
 	   {
