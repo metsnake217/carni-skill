@@ -88,7 +88,7 @@ app.intent('findSchedule',
 							response.send();
 							response.shouldEndSession(false);
 						}
-						var num = Math.random() * (max_questions);
+						var num = Math.floor(Math.random() * (max_questions + 1));
 						console.log("random is: " + num);
 						response.say(questions[num]).shouldEndSession(false);
 					});
