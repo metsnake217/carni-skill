@@ -104,7 +104,7 @@ app.intent('findSchedule',
 	       if(typeof time == "undefined"){
 	       	time = new Date().toISOString();
 	       }
-	       console.log("location is " + location + " - time is " + moment(moment(), "MM-DD-YYYY") + " moment: " + moment());
+	       console.log("location is " + location + " - time is " + moment().format("dddd, MMMM Do YYYY") + " moment: " + moment());
 	       if(typeof time != "undefined"){
 	       	var resultats = "";
 	       
@@ -120,16 +120,16 @@ app.intent('findSchedule',
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
 							if(typeof location != "undefined"){
-								resultats = "Absolutely! Here's the schedule by the " + location + " on " + moment(time, "MM-DD-YYYY") + " ... " + resultats + ". Come join Us!";
+								resultats = "Absolutely! Here's the schedule by the " + location + " on " + moment().format("dddd, MMMM Do YYYY") + " ... " + resultats + ". Come join Us!";
 							} else {
-								resultats = "Absolutely! Here are all the schedules on " + moment(time, "MM-DD-YYYY") + " : ...." +  resultats + ". Join the fun!";
+								resultats = "Absolutely! Here are all the schedules on " + moment().format("dddd, MMMM Do YYYY") + " : ...." +  resultats + ". Join the fun!";
 							}
 							console.log("resultats end is: " + resultats);
 							response.say(resultats).reprompt("There are many other scheduled activities today. Would you like to know about them?"); 
 							response.send();
 							response.shouldEndSession(false);
 						} else {
-							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + " on " + moment(time, "MM-DD-YYYY") + "!";
+							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + " on " + moment().format("dddd, MMMM Do YYYY") + "!";
 							console.log("resultats end is: " + resultats);
 							response.say(resultats); 
 							response.send();
