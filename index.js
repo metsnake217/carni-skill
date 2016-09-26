@@ -104,7 +104,7 @@ app.intent('findSchedule',
 	       if(typeof time == "undefined"){
 	       	time = new Date().toISOString();
 	       }
-	       console.log("location is " + location + " - time is " + time);
+	       console.log("location is " + location + " - time is " + moment(time, "MM-DD-YYYY") + " moment: " + moment());
 	       if(typeof time != "undefined"){
 	       	var resultats = "";
 	       
