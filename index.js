@@ -5,7 +5,7 @@ var alexa = require( 'alexa-app' );
 var app = new alexa.app( 'carni-skill' );
 var schedulerClass = require('./scheduler');
 var Scheduler = schedulerClass.Scheduler;
-
+var moment = require('moment');
 
 app.error = function( exception, request, response ) {
     console.log(exception)
@@ -120,16 +120,16 @@ app.intent('findSchedule',
 								console.log("prop is " + match[prop].location + " - " + prop);
 							}
 							if(typeof location != "undefined"){
-								resultats = "Absolutely! Here's the schedule by the " + location + " on " + time + " ... " + resultats + ". Come join Us!";
+								resultats = "Absolutely! Here's the schedule by the " + location + " on " + moment(time, "MM-DD-YYYY") + " ... " + resultats + ". Come join Us!";
 							} else {
-								resultats = "Absolutely! Here are all the schedules on " + time + " : ...." +  resultats + ". Join the fun!";
+								resultats = "Absolutely! Here are all the schedules on " + moment(time, "MM-DD-YYYY") + " : ...." +  resultats + ". Join the fun!";
 							}
 							console.log("resultats end is: " + resultats);
 							response.say(resultats).reprompt("There are many other scheduled activities today. Would you like to know about them?"); 
 							response.send();
 							response.shouldEndSession(false);
 						} else {
-							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + " on " + time + "!";
+							resultats = "Absolutely! Sorry there are no activities scheduled by the " + location + " on " + moment(time, "MM-DD-YYYY") + "!";
 							console.log("resultats end is: " + resultats);
 							response.say(resultats); 
 							response.send();
