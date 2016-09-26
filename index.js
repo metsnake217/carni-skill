@@ -6,6 +6,7 @@ var app = new alexa.app( 'carni-skill' );
 var schedulerClass = require('./scheduler');
 var Scheduler = schedulerClass.Scheduler;
 var moment = require('moment');
+var momentz = require('moment-timezone');
 
 app.error = function( exception, request, response ) {
     console.log(exception)
@@ -13,6 +14,14 @@ app.error = function( exception, request, response ) {
     console.log(response);
     response.say( 'Sorry an error occured ' + error.message);
 };
+
+app.intent('carniHelp',
+	   {},
+	   function(request,response) {
+	       		response.say("Sure. Hello there! I am your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: 'Alexa All schedules today'. or. 'Alexa Pool today'. or. 'Alexa What\'s the schedule by the Pool tomorrow?'. or 'Alexa stop'. For the full list of commands look at the brochure behind me.'").reprompt("I hope these helped! what can i do you for?");
+	       		response.shouldEndSession(false);
+	   }
+);
 
 app.launch( function( request, response ) {
 	response.say( 'Hello, welcome to Carnival! You have finally arrived in your cabin. Look at the brochure behind me, it will help us commmunicate better!').reprompt( 'Still checking?' );
@@ -112,14 +121,6 @@ app.intent('closeSessionQuestion',
 		return false;
 
 });
-
-app.intent('carniHelp',
-	   {},
-	   function(request,response) {
-	       		response.say("Sure. Hello there! I am your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: 'Alexa All schedules today'. or. 'Alexa Pool today'. or. 'Alexa What\'s the schedule by the Pool tomorrow?'. or 'Alexa stop'. For the full list of commands look at the brochure behind me.'").reprompt("I hope these helped! what can i do you for?");
-	       		response.shouldEndSession(false);
-	   }
-);
 
 app.intent('AMAZON.StopIntent',
 	   function(request,response) {
