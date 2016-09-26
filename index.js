@@ -15,61 +15,12 @@ app.error = function( exception, request, response ) {
 };
 
 app.launch( function( request, response ) {
-	//response.say( 'Hello, welcome to Carnival. Now that we are friends, I can tell you a secret. I will be your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: "Alexa turn lights on" or "Alexa turn lights off" or "Alexa What is the schedule by the Pool today". For the full list of commands look at the brochure behind me.' ).reprompt( 'Are you still there?' ).shouldEndSession( false );
 	response.say( 'Hello, welcome to Carnival! You have finally arrived in your cabin. Look at the brochure behind me, it will help us converse better!').reprompt( 'Still checking?' );
 	response.shouldEndSession( false );
     } );
-/*console.log("requesting alexa now");
-app.request({
-	         "session": {
-	"application": {
-      "applicationId": "amzn1.ask.skill.b5aae3fe-64e0-47d7-9297-d6df8d487195"
-    },
-    "attributes": {},
-    "user": {
-      	"userId": "amzn1.ask.account.AFHTTTJIGB73JYDW2LKXWVZVHR75Y3MCOXYLOMWJHWYDMVPMOWDPNDWQKEAN5COL27O7M6WEUITBWXCEHIRHMCWMENAOPPKYSFMBUTZ3ZGKEJ2JRKBSIQHAZXYQJNVSLTP2RE4YXSAWDFPPHVN2I4OTUYZGT3FU5JQONIM3J25RH7AVQA3J2YASCTKI7WHBS7AHIKZKLDI5UJTA"
-	},
-    "new": false
-  },
-  "request": {
-    "type": "IntentRequest",
-    "intent": {
-      "name": "sayNumber",
-      "slots": {
-        "number": {
-          "name": "number",
-          "value": "4"
-        }
-      }
-    }
-  }
-		    });*/
 
-
-
-
-
-/*app.intent('sayNumber',
-	   {
-	       "slots":{"number":"NUMBER"}
-	       ,"utterances":[ 
-			      "say the number {1-100|number}",
-			      "give me the number {1-100|number}",
-			      "tell me the number {1-100|number}",
-			      "I want to hear you say the number {1-100|number}"]
-		    },
-	   function(request,response) {
-	       var number = request.slot('number');
-	       number = number * number;
-	       console.log("number is: " + number);
-	       response.say("Oh dear! You are looking for the number " + number + ". Anything else I can help you with?");
-response.say("Do you still need me?");
-	       response.shouldEndSession(false);
-	   }
-);*/
-
-app.intent('closeSessionQuestion',
-	   {
+		app.intent('closeSessionQuestion',
+	   		{
 	       "slots":{"answer":"LIST_OF_ANSWERS"}
 	       ,"utterances":["{answer}"]
 		    },
@@ -140,19 +91,6 @@ app.intent('findSchedule',
 			
 			
 		}
-		
-		
-
-		
-
-
-		/*setTimeout(function() {
-			response.say("Oh it seems that you are on your way to a fun activity! At least I hope so. Otherwise: what can i help you with?").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
-			response.send();
-		},1000);*/
-
-    
-	   
 
 app.intent('closeSessionQuestion',
 	   {
