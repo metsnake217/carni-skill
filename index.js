@@ -17,7 +17,7 @@ app.error = function( exception, request, response ) {
 app.launch( function( request, response ) {
 	response.say( 'Hello, welcome to Carnival! You have finally arrived in your cabin. Look at the brochure behind me, it will help us converse better!').reprompt( 'Still checking?' );
 	response.shouldEndSession( false );
-    } );
+
 
 		app.intent('closeSessionQuestion',
 	   		{
@@ -37,6 +37,8 @@ app.launch( function( request, response ) {
 				response.say("Hopefully i will be helpful to you soon! our conversation is about to end...").reprompt("it was lovely conversing with you! Goodbye!").shouldEndSession(true);
 			}
 	   }
+
+	} );
 );
 
 app.intent('findSchedule',
