@@ -39,9 +39,6 @@ app.launch( function( request, response ) {
 	   }
 );
 
-
-
-
 app.intent('findSchedule',
 	   {
 	       "slots":{"location":"LIST_OF_LOCATIONS", "time":"AMAZON.DATE"}
@@ -87,9 +84,7 @@ app.intent('findSchedule',
 							response.shouldEndSession(false);
 						}
 						response.say("Anything else i can help you with? otherwise Say 'Alexa Stop' to end our conversation").shouldEndSession(false);
-					});	
-			
-			
+					});
 		}
 
 app.intent('closeSessionQuestion',
