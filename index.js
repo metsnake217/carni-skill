@@ -169,12 +169,8 @@ app.intent('carniHelp',
 	   }
 );
 
-app.set('views', __dirname + '/views');
-app.set('view options', {
-	layout : false
-});
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.express.set('views', path.join(__dirname, 'views'));
+app.express.set('view engine', 'jade');
 
 module.exports = app;
 
