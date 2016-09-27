@@ -168,5 +168,8 @@ app.intent('carniHelp',
 	   }
 );
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
 module.exports = app;
 

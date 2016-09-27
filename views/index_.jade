@@ -1,0 +1,139 @@
+extends layout
+
+block content
+
+
+
+       - now = (new Date('2014-06-14 00:00:00')).getTime()
+       - count = 0
+       - predicted = false
+       - predictedteam = ''
+       - scoretyp = ''
+       - scorehemma = ''
+       - background = 'background:rgba(0, 0, 0, 0);'
+       - flagtyp = ''
+       - flaghemma = ''
+       div.container
+        div(class="row dayHdr")
+         div.col-xs-12(class="uppercase")= matches[0].datum.toLocaleDateString()
+       - each match in matches
+         - matchdate = (new Date(match.datum)).getTime()
+         - predicted = false
+         - scoretyp = ''
+         - scorehemma = ''
+         - background = 'background:rgba(0, 0, 0, 0);'
+         - flagtyp = "/images/" + match.typ + "_flag.png"
+         - flaghemma = "/images/" + match.hemma + "_flag.png"
+         - betpoints = 0
+         - count++
+         - if(betsMade != null)
+           - each bet in betsMade
+             - if(bet.bet == match.bet)
+               - predicted = true
+               - predictedteam = bet.predictedteam
+               - background = 'background:rgba(163, 29, 189, 0.52);'
+               - scoretyp = bet.scoretyp
+               - scorehemma = bet.scorehemma
+               - betpoints = bet.points
+
+
+           div(id="ctl00_Div2"  class="container")
+
+             div(class="row gameTime")= "kl. " + match.datum.toLocaleTimeString()
+
+               if moment(matchdate).diff(moment(now)) < 0
+                  //img(src="/images/logo.png" alt="Predicted" class="logo")
+
+
+             div(class="row gameRivals" style=""+background)
+               div.col-xs-12
+                  //match.typ + ' vs. ' + match.hemma
+                  - if(bet)
+                        span(class="test")!= bet.scorehemma
+                  span.countryDomain.hidden-xs
+                      img(src=flagtyp, alt='!flag!')
+                  span.countryDomain= match.typ.substr(0,2)
+                  span.versus Vs.
+                  span.countryDomain= match.hemma.substr(0,2)
+                  span.countryDomain.hidden-xs
+                      img(src=flaghemma, alt='!flag!')
+                  .col-xs-12.teamsFull
+                      span.aligner= match.typ
+                      span= match.hemma
+                      .col-xs-12.inputs
+
+                          if moment(matchdate).diff(moment(now)) < 0
+
+                            input(id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-lg form-control aligner" maxlength="1" disabled)
+                            input(id="hemma"+match.bet name="hemma"+match.bet value=scorehemma type="text" placeholder="_" class="input-lg form-control" maxlength="1"  disabled)
+                          else
+                            input(id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-lg form-control aligner" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scoretyp').val($(this).val())" )
+                            input(id="hemma"+match.bet name="hemma"+match.bet value=scorehemma type="text" placeholder="_" class="input-lg form-control" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scorehemma').val($(this).val())" )
+
+                          //input.input-lg.form-control.aligner(type='text', placeholder='__')
+                          //input.input-lg.form-control(type='text', placeholder='__')
+
+             div(class="row btnCon")
+                div.col-xs-12
+                    form(method="post" id="predict")
+
+                        input(name="user" type="hidden" value=''+user)
+                        input(name="position" class="position" id="position" type="hidden" value=count)
+                        input(name="typ" class="typ" id="typ" type="hidden" value=match.typ)
+                        input(name="hemma" class="hemma" id="hemma" type="hidden" value=match.hemma)
+                        input(name="scoretyp" class="scoretyp" id="scoretyp" type="hidden" value=scoretyp)
+                        input(name="scorehemma" class="scorehemma" id="scorehemma" type="hidden" value=scorehemma)
+                        input(name="bet" class="bet" id="bet" type="hidden" value=match.bet)
+                        if moment(matchdate).diff(moment(now)) >= 0
+                            //input(type="submit" class="button " value="Predict!")
+                            if predicted
+                                button.btn.btn-success.btn-lg.btn-block.center-block.predictBtn(type='button') Done! Change your mind?
+                            else
+                                button.btn.btn-primary.btn-lg.btn-block.center-block.predictBtn(type='button') Submit your guess
+                        else
+                            button.btn.btn-primary.btn-lg.btn-block.center-block.predictBtn(type='button', disabled='disabled') Can't do anymore!
+
+
+                  //img(src=flagtyp alt=""  class="flag")
+                  //span!= match.typ+'  '
+                  //input(id="typ"+match.bet name="typ"+match.bet value=scoretyp type="text" placeholder="_" class="input-lg form-control" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scoretyp').val($(this).val())")
+                  //span!= ' v '
+                  //input(id="hemma"+match.bet name="hemma"+match.bet value=scorehemma type="text" placeholder="_" class="input-lg form-control" maxlength="1" onchange="javascript:$(this).parent().parent().find('.scorehemma').val($(this).val())")
+                  //span!= '  '+match.hemma
+                  //img(src=flaghemma alt="" style="border-width:0px;" class="flag")
+
+                  p
+                     if(match.grupp != 'X')
+                        div.group!= '<b>Group:</b> ' + match.grupp
+                     //div.date!= '<b>Date:</b> ' + moment(match.datum).format('LLL')
+                     if(match.resultat != null)
+                        div.results!= 'This game has ended and the result is <b>' + match.resultat + '</b>.'
+                        if(predicted && betpoints != null)
+                           div.points!= 'You have earned <b>' + betpoints + '</b> points.'
+
+                     if predicted && !placesuccess
+                       if predictedteam != 'none'
+                          div.prediction!= '<br/>You have predicted <b>' + predictedteam + '</b> as the winner! '
+                       else
+                          div.prediction!= '<br/>You have predicted this match to end in a <b>tie</b>?! '
+
+                  if placesuccess == count
+                     div(class="alert alert-success")!= successmessage
+                  if error
+                     div(class="alert alert-success")!= message
+
+                  //div
+                    form(method="post" id="predict")
+                    input(name="user" type="hidden" value=''+user)
+                    input(name="position" class="position" id="position" type="hidden" value=count)
+                    input(name="typ" class="typ" id="typ" type="hidden" value=match.typ)
+                    input(name="hemma" class="hemma" id="hemma" type="hidden" value=match.hemma)
+                    input(name="scoretyp" class="scoretyp" id="scoretyp" type="hidden" value=scoretyp)
+                    input(name="scorehemma" class="scorehemma" id="scorehemma" type="hidden" value=scorehemma)
+                    input(name="bet" class="bet" id="bet" type="hidden" value=match.bet)
+                    if moment(matchdate).diff(moment(now)) >= 0
+                       div(class="buttons")
+                          input(type="submit" class="button " value="Predict!")
+
+
+

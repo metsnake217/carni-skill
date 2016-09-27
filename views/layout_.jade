@@ -1,0 +1,63 @@
+doctype html
+html
+  head
+    title= title
+    title= "Alexa @ Carni"
+    link(rel='stylesheet', href='/stylesheets/netlight.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.css')
+    link(rel='stylesheet', href='/stylesheets/player.css')
+    script(type="text/javascript" src="/javascripts/jquery-2.1.1.js")
+    script(type="text/javascript" src="/javascripts/jquery-migrate-1.2.1.min.js")
+    script(type='text/javascript', src='/bootstrap/js/bootstrap.js')
+    script(type='text/javascript', src='/javascripts/utils.js')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=0')
+    meta(name='robots', content='noindex, nofollow')
+    link(rel='shortcut icon', href='images/favicon.png')
+
+    if scripts
+      each script in scripts
+           script(type='text/javascript', src=script)
+  body
+   if loggedIn
+     div(class="container-fluid")
+      header
+         div(class="row-fluid")
+           div(class="navbar navbar-inverse")
+              div(class="navbar-inner")
+                div(class="container-fluid")
+                   a(class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+                      span(class="icon-bar")
+                      span(class="icon-bar")
+                      span(class="icon-bar")
+                   - active = ""
+                   div(class="nav-collapse collapse")
+                      ul(class="nav" style="")
+                         li(class="active" style="color: white; width:150px")
+                            a(href="/")!= "Hello " + netlighter + "!"
+                      ul(class="nav" style="left:5%")
+                         - if(menu == 'today')
+                             - active = "active"
+
+                         li(class=active)
+                            a(href="/")!= "Today"
+                         - active = ""
+                         - if(menu == 'calendar')
+                             - active = "active"
+                         li(class=active)
+                            a(href="/calendar")!= "Calendar"
+                         - active = ""
+                         - if(menu == 'ranking')
+                             - active = "active"
+                         li(class=active)
+                            a(href="/ranking")!= "Ranking"
+                         - active = ""
+                         - if(menu == 'help')
+                             - active = "active"
+                         li(class=active)
+                            a(href="/help")!= "Help"
+                         li
+                            a(href="/logout" style="color:yellow")
+                               i!= "Logout"
+    block content
