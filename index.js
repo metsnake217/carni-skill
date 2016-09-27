@@ -21,7 +21,7 @@ app.launch( function( request, response ) {
 	response.say( 'Hello, welcome to Carnival! You have finally arrived in your cabin. Look at the brochure behind me, it will help us commmunicate better!').reprompt( 'Still checking?' );
 	response.shouldEndSession( false );
 
-				response.render('index', {
+				response.render('../../node_modules/alexa-app-server/views/index', {
 					title : 'Carni Test',
 					matches : null,
 					loggedIn : true,
