@@ -7,7 +7,6 @@ var schedulerClass = require('./scheduler');
 var Scheduler = schedulerClass.Scheduler;
 var moment = require('moment');
 var momentz = require('moment-timezone');
-var path = require('path');
 var max_questions = 4;
 var questions = ["Anything else i can help you with? otherwise Say 'Alexa Stop' to end our conversation", "Fun is on the way! Just ask for more schedules", "There are many other scheduled activities today. Would you like to know about them?","Another schedule for the road?","how else can I help you today?"];
 
@@ -22,6 +21,19 @@ app.launch( function( request, response ) {
 	response.say( 'Hello, welcome to Carnival! You have finally arrived in your cabin. Look at the brochure behind me, it will help us commmunicate better!').reprompt( 'Still checking?' );
 	response.shouldEndSession( false );
 
+				response.render('index', {
+					title : 'Carni Test',
+					matches : null,
+					loggedIn : true,
+					netlighter : request.session.user,
+					user : request.session.userid,
+					menu : 'today',
+					state : 'ended',
+					userid : request.session.userid,
+					now : moment(new Date).tz("Europe/Berlin").format(
+							'YYYY-MM-DD HH:mm:ss')
+				// '2014-06-09 HH:mm:ss'
+				});
 
 		app.intent('closeSessionQuestion',
 	   		{
@@ -168,9 +180,6 @@ app.intent('carniHelp',
 	       		response.shouldEndSession(false);
 	   }
 );
-
-app.express.set('views', path.join(__dirname, 'views'));
-app.express.set('view engine', 'jade');
 
 module.exports = app;
 
