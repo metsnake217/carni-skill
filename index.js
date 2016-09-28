@@ -178,6 +178,14 @@ app.intent('carniHelp',
 	   function(request,response) {
 	       		response.say("Sure. Hello there! I am your personal assistant on this cruise and will get you information about which activities are happening at what time, where you should eat or drink, wake you up with your favorite music in the morning, and even turn your lights on and off. Try me, say: 'Alexa All schedules today'. or. 'Alexa Pool today'. or. 'Alexa What\'s the schedule by the Pool tomorrow?'. or 'Alexa stop'. For the full list of commands look at the brochure behind me.'").reprompt("I hope these helped! what can i do you for?");
 	       		response.shouldEndSession(false);
+				response.render('index', {
+					title : 'results',
+					matches : null,
+					loggedIn : true,
+					time : req.param("time"),
+					state : 'ended',
+					test: "testing from help"
+				});
 	   }
 );
 
