@@ -190,7 +190,7 @@ app.intent('carniHelp',
 				
 	   }
 );
-app.sendexpress(express(),"index","Restaurant","Tomorrow");
+app.express(express(),"index","Restaurant","Tomorrow");
 
 module.exports = app;
 
