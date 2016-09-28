@@ -187,7 +187,7 @@ app.intent('carniHelp',
 					state : 'ended',
 					test: "testing from help"
 				});*/
-				app.express(express,"views/help",false);
+				app.express(express(),"views/help",false);
 	   }
 );
 
