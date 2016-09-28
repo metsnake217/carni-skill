@@ -182,7 +182,7 @@ app.intent('carniHelp',
 					title : 'results',
 					matches : null,
 					loggedIn : true,
-					time : req.param("time"),
+					time : "tomorrow",
 					state : 'ended',
 					test: "testing from help"
 				});
