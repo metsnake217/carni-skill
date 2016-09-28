@@ -8,60 +8,46 @@ block content
      //img(src="/images/referee.png" alt="" style="border-width:0px; width: 250px;float: right;")
      h2!= title
      div(style="text-align:center").alert.alert-warning!="A GAME THAT GOES INTO PENALTIES IS CONSIDERED A DRAW! CHECK <b><a class='yammer' href='https://www.yammer.com/netlight.com/#/threads/inGroup type=in_group&feedId=4463280'>YAMMER</a></b> FOR DETAILS...!"
-     p!= "BL is a simple score prediction game, you predict the result of the match and collect points accordingly. You have until the official kickoff time of the match to input your guess. So make sure to do that before every game. "
-     p!= "You will be ranked against your fellow Netlighters every day, and the top three will get prizes directly brought from Brazil (no joke) when the tournament is over! <br/>"
+     p!= "Alexa is your personal assistant."
+     p!= "Just say 'Alexa ask Carni' and there you go!<br/>"
 
-     h4!= "This is how the points system works:"
+     h4!= "This is how Alexa works:"
         //img(src="/images/brazil_folder.png" alt="" style="float: left;")
      h1()
-        //span!= 'Points system'
-     ul.pointsLayout.alert.alert-info
-        li Score was 3-1. Your prediction: 0-1  <br/> <b> => 0 points (wrong prediction)</b>
-
-        li Score was 3-1. Your prediction: 1-0 <br/> <b> => 3 points (for predicting the winner)</b>
-        li Score was 2-2. Your prediction: 1-1 <br/> <b> => 3 points (for predicting a draw) </b>
-        li Score was 4-2. Your prediction: 2-0 <br/> <b> => 4 points (for predicting the winner and winning margin)</b>
-        li Score was 1-0. Your prediction: 1-0 <br/>  <b> => 6 points (perfect prediction)</b><br/><br/>
 
      h4 Examples:
-     ul(class="pointsLayout")
-
-        li Brazil- Croatia/ Final Score: 1-1 <br/> Your prediction: 1-1 => Points: 6
-        li England- Italy/ Final Score: 0-1 <br/>  Your prediction: 0-0 => Points: 0
-
-
-
-         //table(class="table table-striped table-responsive table-hover" )
-           thead
+          table(class="table table-striped table-responsive table-hover" )
+            thead
               tr
-                 th!='Score was'
-                 th!='Your prediction was'
-                 th!='Points you get'
-           tbody
+                th!='Location'
+                th!='Activity'
+                th!='Time'
+                th!='Duration'
+            tbody
               tr
-                 td!= "3-1"
-                 td!= "0-1"
-                 td!= "0 points"
+                td!= "Bar Lola"
+                td!= "Our popular Happy Hour at the Bar!"
+                td!= "5pm"
+                td!= "2 hours"
               tr
-                 td!= "3-1"
-                 td!= "1-0"
-                 td!= "3 points"
+                td!= "Restaurant"
+                td!= "It's lunch time!"
+                td!= "2pm"
+                td!= "2 hours"
               tr
-                 td!= "2-2"
-                 td!= "1-1"
-                 td!= "3 points"
+                td!= "Pool"
+                td!= "Aqua Gym with our master swimmers"
+                td!= "10am"
+                td!= "2 hours"
               tr
-                 td!= "4-2"
-                 td!= "2-0"
-                 td!= "4 points"
-              tr
-                 td!= "1-0"
-                 td!= "1-0"
-                 td!= "6 points"                                                              
+                td!= "Pool"
+                td!= "Aqua Gym with our master swimmers"
+                td!= "3pm"
+                td!= "2 hours"                                                          
 
      p.alert.alert-success
            //img(src="/images/brazil_help_contact.png" alt="" style="border-width:0px;float:center;width:75px")
-           span!= ''+netlighter +', you can of course always reach us at:'
-           a(href="mailto:brazilianlight2014@gmail.com")!= ' brazilianlight2014@gmail.com <br/>'
+           span!= ''+netlighter +', You can of course always reach us at:'
+           a(href="mailto:gnagna217@gmail.com")!= ' gnagna217@gmail.com <br/>'
                
                

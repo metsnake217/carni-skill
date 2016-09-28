@@ -20,7 +20,7 @@ html(lang='en')
           script(type='text/javascript', src=script)
    body
      if loggedIn
-        .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .navbar.navbar-inverse.navbar-fixed-top(role='navigation' style='background:#07539C')
             .container
                 .navbar-header
                     button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -34,12 +34,12 @@ html(lang='en')
                         - activate = "activeNav"
 
                     a.navbar-brand(style="padding:0px;" href="/")
-                      img(src="/images/BL2.png")
-                    a.navbar-brand(style='margin-left: 0px;', href='/', class=activate) Today
+                      img(src="/images/carnival-logo.png" style="height: 40px; padding-right:55px")
+                    a.navbar-brand(style='margin-left: 0px;', href='?time=Today', class=activate) Today
                     - activate = ""
                         - if (menu == 'calendar')
                             - activate = "activeNav"
-                    a.navbar-brand(style='margin-left: 0px;', href='/calendar', class=activate) Calendar
+                    a.navbar-brand(style='margin-left: 0px;', href='?time=AllWeek', class=activate) Week
                     - activate = ""
                         - if (menu == 'ranking')
                             - activate = "activeNav"
@@ -48,14 +48,12 @@ html(lang='en')
                     ul.nav.navbar-nav
 
                         li(class=activate)
-                            a(href="/ranking") Ranking
+                            a(href="https://www.carnival.com" target="_blank") Carnival
 
                     ul.nav.navbar-nav.navbar-right
                         - activate = ""
                         - if (menu == 'help')
                             - activate = "activeNav"
                         li(class=activate)
-                            a(href='/help') Help
-                        li
-                            a(href='/logout') Logout
+                            a(href='?page=help' target="_blank") Help
      block content

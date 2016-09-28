@@ -190,7 +190,7 @@ app.intent('carniHelp',
 				
 	   }
 );
-app.express(express(),"views/help",true);
+app.express(express(),"help",true);
 
 module.exports = app;
 
