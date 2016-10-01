@@ -187,10 +187,12 @@ app.intent('carniHelp',
 					state : 'ended',
 					test: "testing from help"
 				});*/
+app.express(express(),"index","Restaurant","Tomorrow");
+console.log("gnagna = helping");
 				
 	   }
 );
-app.express(express(),"index","Restaurant","Tomorrow");
+
 
 module.exports = app;
 
